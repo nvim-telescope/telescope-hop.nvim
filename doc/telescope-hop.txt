@@ -8,19 +8,19 @@ hop.nvim.
 To find out more:
 https://github.com/nvim-telescope/telescope-hop.nvim
 
-  :h telescope-hop.actions
-  :h telescope-hop.config
+  :h |telescope-hop.setup|
+  :h |telescope-hop.actions|
 
 
 ================================================================================
-                                                          *telescope-hop.config*
+                                                           *telescope-hop.setup*
 
 Telescope-hop.nvim allows you to fully configure the default options for
-`telescope-hop.actions`.
+|telescope-hop.actions|.
 
-config.setup({opts})                                          *config.setup()*
-    Setup function for `telescope-hop.nvim`.
-    - Notes:
+telescope_hop.setup({opts})                            *telescope_hop.setup()*
+    Setup function for |telescope-hop.nvim|.
+    - Note:
         - `trace_entry`, `reset_selection` and `escape_keys` only affect
           `actions._hop_loop`
         - The termcodes for passed strings of `escape_keys` are replaced, which
@@ -54,7 +54,7 @@ config.setup({opts})                                          *config.setup()*
                                                  to (default: roughly lower- &
                                                  upper-cased home row)
         {sign_hl}            (string|table)      hl group to link hop chars to
-                                                 (default: `"QuestionMsg"`)
+                                                 (default: `"Search"`)
         {line_hl}            (nil|string|table)  analogous to sign_hl (default:
                                                  `nil`)
         {sign_virt_text_pos} (string)            if "right_align" then hop char
@@ -84,12 +84,13 @@ config.setup({opts})                                          *config.setup()*
                                                          *telescope-hop.actions*
 
 Telescope-hop.nvim actions that help you navigate and perform actions on
-results from telescope pickers. `telescope-hop.actions` are typically composed
+results from telescope pickers. |telescope-hop.actions| are typically composed
 with other telescope actions.
 
-Telescope-hop.nvim actions (`hop_actions`) are canonically accessed via
+Telescope-hop.nvim actions (|hop_actions|) are canonically accessed via
 `R"telescope".extensions.hop`, where `R` constitutes hot-reloading via plenary
 to ensure the config is setup adequately.
+
 if pcall(require, "plenary") then
  R = function(name)
    require("plenary.reload").reload_module(name)
@@ -111,7 +112,7 @@ hop_actions._hop({prompt_bufnr}, {opts})                  *hop_actions._hop()*
           mappings = {
             i = {
               ['<C-space>'] = function(prompt_bufnr)
-                require'telescope'.extensions.hop._hop(prompt_bufnr, {callback = actions.select_default)
+                require'telescope'.extensions.hop._hop(prompt_bufnr, {callback = actions.select_default})
               end
             },
           },
@@ -128,7 +129,7 @@ hop_actions._hop({prompt_bufnr}, {opts})                  *hop_actions._hop()*
                                                  to, roughly defaults to lower
                                                  and upper-cased home row
         {sign_hl}            (string|table)      hl group to link hop chars to
-                                                 (default: `"QuestionMsg"`)
+                                                 (default: `"Search"`)
         {line_hl}            (nil|string|table)  analogous to sign_hl (default:
                                                  `nil`)
         {sign_virt_text_pos} (string)            if "right_align" then hop char
@@ -147,7 +148,7 @@ hop_actions._hop({prompt_bufnr}, {opts})                  *hop_actions._hop()*
 
 hop_actions.hop()                                          *hop_actions.hop()*
     Hop.nvim-style single char motion to entry in results buffer.
-    - Note: hops with set defaults, use `actions._hop` for passing opts
+    - Note: hops with set defaults, use |hop_actions._hop| for passing opts
       on-the-fly
 
     Example Usage:
@@ -164,9 +165,9 @@ hop_actions.hop()                                          *hop_actions.hop()*
 
 
 hop_actions._hop_loop({prompt_bufnr}, {opts})        *hop_actions._hop_loop()*
-    Levers `actions._hop` to sequentially do `callback` on entry until escape
-    keys are registered.
-    - Notes:
+    Levers |hop_actions._hop| to sequentially do `callback` on entry until
+    escape keys are registered.
+    - Note:
         - The termcodes for passed strings of `escape_keys` are replaced, which
           defaults to {<CR>, "<ESC>", "<C-c>"}
 
