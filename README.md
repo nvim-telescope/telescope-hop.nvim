@@ -27,12 +27,17 @@ use {'nvim-telescope/telescope-hop.nvim'}
 
 ## Telescope Setup and Configuration:
 
+The below `setup` shows an example configuration to instantiate `telescope-hop.nvim`. See `:h telescope-hop.config` for the entire set of flags that can be configured. 
+
 ```lua
 require("telescope").setup {
   extensions = {
     hop = {
+      -- define your hop keys in order; defaults to roughly lower- and uppercased home row
+      keys = { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";"} -- ... and more
+
       -- Highlight groups to link to signs and lines; the below configuration refers to demo
-      sign_hl = { "WarningMsg", "Title" }, -- sign_hl typically only defines foreground to possibly be combined with line_hl
+      sign_hl = { "WarningMsg", "Title" },  -- sign_hl typically only defines foreground to possibly be combined with line_hl
       line_hl = { "CursorLine", "Normal" }, -- optional, typically a table of two highlight groups that are alternated between
       -- options specific to `hop_loop`
       clear_selection_hl = false,           -- true temporarily disables Telescope selection highlighting
@@ -81,7 +86,3 @@ telescope.setup {
 }
 telescope.load_extension "hop"
 ```
-
-## TODO
-
-- [ ] Docgen will likely not work out-of-the-box :)

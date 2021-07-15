@@ -7,22 +7,16 @@
 local config = {}
 
 --- Setup function for `telescope-hop.nvim`.
---- - Highlight groups (`sign_hl`, `line_hl`):
----   - Commonly, line_hl is a version of sign_hl that only sets the background to not override results foreground
---- - `hop_loop`-specific: 
+--- - Notes:
 ---     - `trace_entry`, `reset_selection` and `escape_keys` only affect `actions._hop_loop`
 ---     - The termcodes for passed strings of `escape_keys` are replaced, which defaults to {<CR>, "<ESC>", "<C-c>"}
---- - Global Defaults
----   - sign_hl: QuestionMsg
----   - line_hl: nil
----   - sign_virt_text_pos: "overlay" (see `vim.api.nvim_buf_set_extmark`)
----   - clear_selection_hl: true
---- - Hop-loop-specific Defaults
----   - trace_entry: false
----   - reset_selection: true
----   - escape_keys: {"<ESC>", "<C-c>"}
----   - accept_keys: {"<CR>"}
+--- - Highlight groups (`sign_hl`, `line_hl`):
+---   - Link `sign_hl` and `line_hl` to their respective highlight groups
+---   - Setting `sign_hl` and `line_hl` to a table of two highlight groups results in alternating highlighting
+---   - Setting `link_hl` to nil does not set any line highlighting
+--- - `hop_loop`-specific: 
 --- <pre>
+---
 --- Example:
 ---   require("telescope").setup {
 ---     extensions = {
@@ -37,13 +31,15 @@ local config = {}
 ---   }
 --- </pre>
 ---@param opts table: extension configuration
----@field keys table: table of chars in order to hop to, roughly defaults to lower and upper-cased home row
----@field sign_hl string|table: hl group to link hop chars to; if table, must be two groups that are alternated between
----@field line_hl nil|string|table: analogous to sign_hl; in addition, `nil` results in no line highlighting
----@field sign_virt_text_pos string: if "right_align" then hop char aligned to right, else left aligned
----@field trace_entry boolean: `hop_loop` only, entry hopped to will be highlighted via telescope selection hl groups
----@field reset_selection boolean: `hop_loop` only, return to entry selected before entering `hop` loop
----@field escape_keys table: `hop_loop` only, set of key chords (termcodes are replaced) that finish loop
+---@field keys table: table of chars in order to hop to (default: roughly lower- & upper-cased home row)
+---@field sign_hl string|table: hl group to link hop chars to (default: `"QuestionMsg"`)
+---@field line_hl nil|string|table: analogous to sign_hl (default: `nil`)
+---@field sign_virt_text_pos string: if "right_align" then hop char aligned to right else left (default: `"overlay"`)
+---@field trace_entry boolean: entry hopped to will be highlighted via telescope selection hl groups (default: `false`)
+---@field clear_selection boolean: temporarily clear Telescope selection highlight group (default: `true`)
+---@field reset_selection boolean: return to entry selected before entering `hop` loop (default: `true`)
+---@field escape_keys table: key chords that interrupt loop before `loop_callback` (default: `{"<ESC>", "<C-c>"`}`)
+---@field accept_keys table: key chords that finish loop and execute `loop_callback if passed (default: `{"<CR>"}`)
 config.setup = function(opts)
   -- general configuration
   config.keys = vim.F.if_nil(opts.keys, {
