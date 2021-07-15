@@ -1,29 +1,22 @@
+---@tag telescope-hop.config
+
 ---@brief [[
 --- Telescope-hop.nvim allows you to fully configure the default options for `telescope-hop.actions`.
 ---@brief ]]
 
----@tag telescope-hop.config
 
 local config = {}
 
 --- Setup function for `telescope-hop.nvim`.
+--- - Notes:
+---     - `trace_entry`, `reset_selection` and `escape_keys` only affect `actions._hop_loop`
+---     - The termcodes for passed strings of `escape_keys` are replaced, which defaults to {<CR>, "<ESC>", "<C-c>"}
 --- - Highlight groups (`sign_hl`, `line_hl`):
 ---   - Link `sign_hl` and `line_hl` to their respective highlight groups
 ---   - Setting `sign_hl` and `line_hl` to a table of two highlight groups results in alternating highlighting
 ---   - Setting `link_hl` to nil does not set any line highlighting
 --- - `hop_loop`-specific: 
----     - `trace_entry`, `reset_selection` and `escape_keys` only affect `actions._hop_loop`
----     - The termcodes for passed strings of `escape_keys` are replaced, which defaults to {<CR>, "<ESC>", "<C-c>"}
---- - Global Defaults
----   - sign_hl: QuestionMsg
----   - line_hl: nil
----   - sign_virt_text_pos: "overlay" (see `vim.api.nvim_buf_set_extmark`)
----   - clear_selection_hl: true
---- - Hop-loop-specific Defaults
----   - trace_entry: false
----   - reset_selection: true
----   - escape_keys: {"<ESC>", "<C-c>"}
----   - accept_keys: {"<CR>"}
+--
 --- <pre>
 --- Example:
 ---   require("telescope").setup {

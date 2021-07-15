@@ -33,6 +33,7 @@ local hop_config = require "telescope._extensions.hop.config"
 --- - Highlight groups (`sign_hl`, `line_hl`):
 ---   - String: single uniform highlighting of hop sign or lines
 ---   - Table: must comprise two highlight groups to configure alternate highlighting of signs or lines
+--
 --- <pre>
 --- Example Usage: select entry by hopping
 ---   require("telescope").setup {
@@ -173,6 +174,7 @@ end
 
 --- Hop.nvim-style single char motion to entry in results buffer.
 --- - Note: hops with set defaults, use `actions._hop` for passing opts on-the-fly
+--
 --- <pre>
 --- Example Usage:
 ---   require("telescope").setup {
@@ -192,6 +194,7 @@ end
 --- Levers `actions._hop` to sequentially do `callback` on entry until escape keys are registered.
 --- - Notes:
 ---     - The termcodes for passed strings of `escape_keys` are replaced, which defaults to {<CR>, "<ESC>", "<C-c>"}
+--
 --- <pre>
 --- Example Usage: toggle selection with hop and send selected to qflist
 ---   require("telescope").setup {
