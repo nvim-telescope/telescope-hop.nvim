@@ -10,8 +10,8 @@ docs.test = function()
   -- TODO: Fix the other files so that we can add them here.
   local input_files = {
     "./lua/telescope/_extensions/hop.lua",
+    "./lua/telescope/_extensions/hop/config.lua",
     "./lua/telescope/_extensions/hop/actions.lua",
-    "./lua/telescope/_extensions/hop/config.lua.lua",
   }
 
   local output_file = "./doc/telescope-hop.txt"
