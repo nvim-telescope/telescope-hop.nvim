@@ -38,6 +38,16 @@ local config = {}
 ---     }
 ---   }
 --- </pre>
+---@class defaults
+---@field keys table: roughly defaults to lower and upper-cased home row
+---@field sign_hl string|table: QuestionMsg
+---@field line_hl nil|string|table: nil
+---@field sign_virt_text_pos string: "overlay"
+---@field trace_entry boolean: false
+---@field reset_selection boolean: true
+---@field escape_keys table: {"<ESC>", "<C-c>"}
+---@field accept_keys table: {"<CR>"}
+---
 ---@param opts table: extension configuration
 ---@field keys table: table of chars in order to hop to, roughly defaults to lower and upper-cased home row
 ---@field sign_hl string|table: hl group to link hop chars to; if table, must be two groups that are alternated between
@@ -45,7 +55,8 @@ local config = {}
 ---@field sign_virt_text_pos string: if "right_align" then hop char aligned to right, else left aligned
 ---@field trace_entry boolean: `hop_loop` only, entry hopped to will be highlighted via telescope selection hl groups
 ---@field reset_selection boolean: `hop_loop` only, return to entry selected before entering `hop` loop
----@field escape_keys table: `hop_loop` only, set of key chords (termcodes are replaced) that finish loop
+---@field escape_keys table: `hop_loop` only, set of key chords that interrupt loop before `loop_callback`
+---@field accept_keys table: `hop_loop` only, set of key chords that finish loop and execute `loop_callback if passed
 config.setup = function(opts)
   -- general configuration
   config.keys = vim.F.if_nil(opts.keys, {

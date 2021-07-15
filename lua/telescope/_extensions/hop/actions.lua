@@ -6,7 +6,18 @@
 ---@brief [[
 --- Telescope-hop.nvim actions that help you navigate and perform actions on results from telescope pickers.
 --- `telescope-hop.actions` are typically composed with other telescope actions.
----@brief
+---
+--- Telescope-hop.nvim actions (`hop_actions`) are canonically accessed via `R"telescope".extensions.hop`, where `R`
+--- constitutes hot-reloading via plenary to ensure the config is setup adequately.
+--- <pre>
+--- if pcall(require, "plenary") then
+---  R = function(name)
+---    require("plenary.reload").reload_module(name)
+---    return require(name)
+---  end
+---end
+--- </pre>
+---@brief ]]
 
 -- telescope modules
 local actions = require "telescope.actions"
