@@ -1,14 +1,18 @@
 ---@brief [[
 --- Telescope-hop.nvim actions that help you navigate and perform actions on results from telescope pickers.
---- `telescope-hop.actions` are typically composed with other telescope actions.
+--- |telescope-hop.actions| are typically composed with other telescope actions.
 ---
---- Telescope-hop.nvim actions (`hop_actions`) are canonically accessed via `R"telescope".extensions.hop`, where `R`
+--- Telescope-hop.nvim actions (|hop_actions|) are canonically accessed via
+--- <pre>
+---     R "telescope".extensions.hop`, where R
+--- </pre>
 --- constitutes hot-reloading via plenary to ensure the config is setup adequately.
 --- <pre>
---- if pcall(require, "plenary") then
----  R = function(name)
----    require("plenary.reload").reload_module(name)
----    return require(name)
+---
+---  if pcall(require, "plenary") then
+---   R = function(name)
+---     require("plenary.reload").reload_module(name)
+---     return require(name)
 ---  end
 ---end
 --- </pre>
@@ -21,7 +25,6 @@ local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 local action_utils = require "telescope.actions.utils"
 
--- telescope-hop modules
 local hop_actions = {}
 local hop_config = require "telescope._extensions.hop.config"
 
@@ -38,7 +41,7 @@ local hop_config = require "telescope._extensions.hop.config"
 ---       mappings = {
 ---         i = {
 ---           ['<C-space>'] = function(prompt_bufnr)
----             require'telescope'.extensions.hop._hop(prompt_bufnr, {callback = actions.select_default)
+---             require'telescope'.extensions.hop._hop(prompt_bufnr, {callback = actions.select_default})
 ---           end
 ---         },
 ---       },
@@ -48,7 +51,7 @@ local hop_config = require "telescope._extensions.hop.config"
 ---@param prompt_bufnr number: The prompt bufnr
 ---@param opts table: options to pass to hop
 ---@field keys table: table of chars in order to hop to, roughly defaults to lower and upper-cased home row
----@field sign_hl string|table: hl group to link hop chars to (default: `"QuestionMsg"`)
+---@field sign_hl string|table: hl group to link hop chars to (default: `"Search"`)
 ---@field line_hl nil|string|table: analogous to sign_hl (default: `nil`)
 ---@field sign_virt_text_pos string: if "right_align" then hop char aligned to right else left (default: `"overlay"`)
 ---@field clear_selection boolean: temporarily clear Telescope selection highlight group (default: `true`)
@@ -170,7 +173,7 @@ hop_actions._hop = function(prompt_bufnr, opts)
 end
 
 --- Hop.nvim-style single char motion to entry in results buffer.
---- - Note: hops with set defaults, use `actions._hop` for passing opts on-the-fly
+--- - Note: hops with set defaults, use |hop_actions._hop| for passing opts on-the-fly
 --- <pre>
 ---
 --- Example Usage:
@@ -188,8 +191,8 @@ hop_actions.hop = function(prompt_bufnr)
   hop_actions._hop(prompt_bufnr, {})
 end
 
---- Levers `actions._hop` to sequentially do `callback` on entry until escape keys are registered.
---- - Notes:
+--- Levers |hop_actions._hop| to sequentially do `callback` on entry until escape keys are registered.
+--- - Note:
 ---     - The termcodes for passed strings of `escape_keys` are replaced, which defaults to {<CR>, "<ESC>", "<C-c>"}
 --- <pre>
 ---
