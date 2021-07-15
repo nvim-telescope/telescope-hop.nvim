@@ -30,7 +30,8 @@ use {'nvim-telescope/telescope-hop.nvim'}
 The below `setup` shows an example configuration to instantiate `telescope-hop.nvim`. You most likely will want to configure `keys` and `sign_hl` to better match your personal preferences and colorscheme. See `:h telescope-hop.setup` for the entire set of flags that can be configured.
 
 ```lua
-require("telescope").setup {
+local telescope = require("telescope")
+telescope.setup {
   extensions = {
     hop = {
       -- keys define your hop keys in order; defaults to roughly lower- and uppercased home row
@@ -44,7 +45,8 @@ require("telescope").setup {
   -- options specific to `hop_loop`
       -- true temporarily disables Telescope selection highlighting
       clear_selection_hl = false,
-      -- highlight hopped to entry with telescope selection highlight; mutually exclusive with `clear_selection_hl`
+      -- highlight hopped to entry with telescope selection highlight
+      -- note: mutually exclusive with `clear_selection_hl`
       trace_entry = true,
       -- jump to entry where hoop loop was started from
       reset_selection = true,
@@ -53,7 +55,7 @@ require("telescope").setup {
 }
 -- To get the extension loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
-require('telescope').load_extension('hop')
+telescope.load_extension('hop')
 ```
 
 ## Usage
