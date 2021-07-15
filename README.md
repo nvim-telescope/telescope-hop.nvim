@@ -27,7 +27,7 @@ use {'nvim-telescope/telescope-hop.nvim'}
 
 ## Telescope Setup and Configuration:
 
-The below `setup` shows an example configuration to instantiate `telescope-hop.nvim`. You most likely will want to configure `keys` and `sign_hl` to better match your personal preferences and colorscheme. `See `:h telescope-hop.setup` for the entire set of flags that can be configured.
+The below `setup` shows an example configuration to instantiate `telescope-hop.nvim`. You most likely will want to configure `keys` and `sign_hl` to better match your personal preferences and colorscheme. See `:h telescope-hop.setup` for the entire set of flags that can be configured.
 
 ```lua
 require("telescope").setup {
