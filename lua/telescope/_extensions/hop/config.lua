@@ -1,9 +1,8 @@
----@tag telescope-hop.config
-
 ---@brief [[
 --- Telescope-hop.nvim allows you to fully configure the default options for `telescope-hop.actions`.
 ---@brief ]]
 
+---@tag telescope-hop.config
 
 local config = {}
 

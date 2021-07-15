@@ -1,8 +1,3 @@
----@tag telescope-hop.actions
-
--- TODO: Add @module to make it so we can have the prefix.
---@module telescope-hop.actions
-
 ---@brief [[
 --- Telescope-hop.nvim actions that help you navigate and perform actions on results from telescope pickers.
 --- `telescope-hop.actions` are typically composed with other telescope actions.
@@ -18,6 +13,8 @@
 ---end
 --- </pre>
 ---@brief ]]
+
+---@tag telescope-hop.actions
 
 -- telescope modules
 local actions = require "telescope.actions"
