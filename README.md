@@ -81,7 +81,3 @@ telescope.setup {
 }
 telescope.load_extension "hop"
 ```
-
-## TODO
-
-- [ ] Docgen will likely not work out-of-the-box :)
