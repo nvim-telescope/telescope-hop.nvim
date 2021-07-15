@@ -22,7 +22,6 @@ local hop_config = require "telescope._extensions.hop.config"
 --- - Highlight groups (`sign_hl`, `line_hl`):
 ---   - String: single uniform highlighting of hop sign or lines
 ---   - Table: must comprise two highlight groups to configure alternate highlighting of signs or lines
----   - A common choice for line_hl is a version of sign_hl that only sets the background
 --- <pre>
 --- Example Usage: select entry by hopping
 ---   require("telescope").setup {

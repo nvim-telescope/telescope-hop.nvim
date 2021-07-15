@@ -8,7 +8,9 @@ local config = {}
 
 --- Setup function for `telescope-hop.nvim`.
 --- - Highlight groups (`sign_hl`, `line_hl`):
----   - Commonly, line_hl is a version of sign_hl that only sets the background to not override results foreground
+---   - Link `sign_hl` and `line_hl` to their respective highlight groups
+---   - Setting `sign_hl` and `line_hl` to a table of two highlight groups results in alternating highlighting
+---   - Setting `link_hl` to nil does not set any line highlighting
 --- - `hop_loop`-specific: 
 ---     - `trace_entry`, `reset_selection` and `escape_keys` only affect `actions._hop_loop`
 ---     - The termcodes for passed strings of `escape_keys` are replaced, which defaults to {<CR>, "<ESC>", "<C-c>"}
