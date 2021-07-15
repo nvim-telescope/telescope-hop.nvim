@@ -1,13 +1,13 @@
 ---@brief [[
---- Telescope-hop.nvim allows you to fully configure the default options for `telescope-hop.actions`.
+--- Telescope-hop.nvim allows you to fully configure the default options for |telescope-hop.actions|.
 ---@brief ]]
 
----@tag telescope-hop.config
+---@tag telescope-hop.setup
 
 local config = {}
 
---- Setup function for `telescope-hop.nvim`.
---- - Notes:
+--- Setup function for |telescope-hop.nvim|.
+--- - Note:
 ---     - `trace_entry`, `reset_selection` and `escape_keys` only affect `actions._hop_loop`
 ---     - The termcodes for passed strings of `escape_keys` are replaced, which defaults to {<CR>, "<ESC>", "<C-c>"}
 --- - Highlight groups (`sign_hl`, `line_hl`):
@@ -32,7 +32,7 @@ local config = {}
 --- </pre>
 ---@param opts table: extension configuration
 ---@field keys table: table of chars in order to hop to (default: roughly lower- & upper-cased home row)
----@field sign_hl string|table: hl group to link hop chars to (default: `"QuestionMsg"`)
+---@field sign_hl string|table: hl group to link hop chars to (default: `"Search"`)
 ---@field line_hl nil|string|table: analogous to sign_hl (default: `nil`)
 ---@field sign_virt_text_pos string: if "right_align" then hop char aligned to right else left (default: `"overlay"`)
 ---@field trace_entry boolean: entry hopped to will be highlighted via telescope selection hl groups (default: `false`)
@@ -48,7 +48,7 @@ config.setup = function(opts)
     "A", "S", "D", "F", "G", "H", "J", "K", "L", ":",
     "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P",
   })
-  config.sign_hl = vim.F.if_nil(opts.sign_hl, "QuestionMsg")
+  config.sign_hl = vim.F.if_nil(opts.sign_hl, "Search")
   config.line_hl = opts.line_hl
   config.sign_virt_text_pos = opts.sign_virt_text_pos == "right_align" and "right_align"
     or "overlay"
