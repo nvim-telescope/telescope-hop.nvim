@@ -9,10 +9,10 @@
 --- constitutes hot-reloading via plenary to ensure the config is setup adequately.
 --- <pre>
 ---
---- if pcall(require, "plenary") then
----  R = function(name)
----    require("plenary.reload").reload_module(name)
----    return require(name)
+---  if pcall(require, "plenary") then
+---   R = function(name)
+---     require("plenary.reload").reload_module(name)
+---     return require(name)
 ---  end
 ---end
 --- </pre>

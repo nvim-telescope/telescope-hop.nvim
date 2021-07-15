@@ -1,6 +1,5 @@
 ---@brief [[
 --- Telescope-hop.nvim allows you to fully configure the default options for |telescope-hop.actions|.
---- The extension
 ---@brief ]]
 
 ---@tag telescope-hop.setup
@@ -9,7 +8,7 @@
 local telescope_hop = {}
 
 --- Setup function for |telescope-hop.nvim|.
---- - Note:
+--- - Notes:
 ---     - `trace_entry`, `reset_selection` and `escape_keys` only affect |hop_actions._hop_loop|
 ---     - The termcodes for passed strings of `escape_keys` are replaced, which defaults to {"<CR>", "<ESC>", "<C-c>"}
 --- - Highlight groups (`sign_hl`, `line_hl`):
