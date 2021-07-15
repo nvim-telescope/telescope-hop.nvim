@@ -38,7 +38,7 @@ local hop_config = require "telescope._extensions.hop.config"
 ---       mappings = {
 ---         i = {
 ---           ['<C-space>'] = function(prompt_bufnr)
----             require'telescope'.extensions.hop._hop(prompt_bufnr, {callback = actions.select_default)
+---             require'telescope'.extensions.hop._hop(prompt_bufnr, {callback = actions.select_default})
 ---           end
 ---         },
 ---       },

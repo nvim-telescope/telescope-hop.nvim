@@ -4,7 +4,7 @@
 
 ---@tag telescope-hop.setup
 
-local config = {}
+local telescope_hop = {}
 
 --- Setup function for |telescope-hop.nvim|.
 --- - Note:
@@ -14,7 +14,7 @@ local config = {}
 ---   - Link `sign_hl` and `line_hl` to their respective highlight groups
 ---   - Setting `sign_hl` and `line_hl` to a table of two highlight groups results in alternating highlighting
 ---   - Setting `link_hl` to nil does not set any line highlighting
---- - `hop_loop`-specific: 
+--- - `hop_loop`-specific:
 --- <pre>
 ---
 --- Example:
@@ -40,28 +40,33 @@ local config = {}
 ---@field reset_selection boolean: return to entry selected before entering `hop` loop (default: `true`)
 ---@field escape_keys table: key chords that interrupt loop before `loop_callback` (default: `{"<ESC>", "<C-c>"`}`)
 ---@field accept_keys table: key chords that finish loop and execute `loop_callback if passed (default: `{"<CR>"}`)
-config.setup = function(opts)
-  -- general configuration
-  config.keys = vim.F.if_nil(opts.keys, {
+telescope_hop.setup = function(opts)
+  -- general telescope_hopuration
+  telescope_hop.keys = vim.F.if_nil(opts.keys, { 
     "a", "s", "d", "f", "g", "h", "j", "k", "l", ";",
     "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
     "A", "S", "D", "F", "G", "H", "J", "K", "L", ":",
-    "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P",
-  })
-  config.sign_hl = vim.F.if_nil(opts.sign_hl, "Search")
-  config.line_hl = opts.line_hl
-  config.sign_virt_text_pos = opts.sign_virt_text_pos == "right_align" and "right_align"
+    "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", })
+  telescope_hop.sign_hl = vim.F.if_nil(opts.sign_hl, "Search")
+  telescope_hop.line_hl = opts.line_hl
+  telescope_hop.sign_virt_text_pos = opts.sign_virt_text_pos == "right_align" and "right_align"
     or "overlay"
-  config.clear_selection_hl = vim.F.if_nil(opts.clear_selection_hl, true)
+  telescope_hop.clear_selection_hl = vim.F.if_nil(opts.clear_selection_hl, true)
   -- hop loop specific configuration
-  config.trace_entry = vim.F.if_nil(opts.trace_entry, false)
-  config.reset_selection = vim.F.if_nil(opts.reset_selection, true)
-  config.escape_keys = vim.tbl_map(function(key)
+  telescope_hop.trace_entry = vim.F.if_nil(opts.trace_entry, false)
+  telescope_hop.reset_selection = vim.F.if_nil(opts.reset_selection, true)
+  telescope_hop.escape_keys = vim.tbl_map(function(key)
     return vim.api.nvim_replace_termcodes(key, true, false, true)
-  end, vim.F.if_nil(opts.escape_keys, {"<ESC>", "<C-c>"}))
-  config.accept_keys = vim.tbl_map(function(key)
+  end, vim.F.if_nil(
+    opts.escape_keys,
+    { "<ESC>", "<C-c>" }
+  ))
+  telescope_hop.accept_keys = vim.tbl_map(function(key)
     return vim.api.nvim_replace_termcodes(key, true, false, true)
-  end, vim.F.if_nil(opts.escape_keys, {"<CR>"}))
+  end, vim.F.if_nil(
+    opts.escape_keys,
+    { "<CR>" }
+  ))
 end
 
-return config
+return telescope_hop

@@ -6,8 +6,8 @@
 --- To find out more:
 --- https://github.com/nvim-telescope/telescope-hop.nvim
 ---
+---   :h |telescope-hop.setup|
 ---   :h |telescope-hop.actions|
----   :h |telescope-hop.config|
 --- </pre>
 ---@brief ]]
 
