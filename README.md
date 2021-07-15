@@ -84,5 +84,4 @@ telescope.load_extension "hop"
 
 ## TODO
 
-- [ ] Setup should not require hot-reloading extension actions
 - [ ] Docgen will likely not work out-of-the-box :)
