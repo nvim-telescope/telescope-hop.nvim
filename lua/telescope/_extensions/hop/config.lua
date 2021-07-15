@@ -1,34 +1,44 @@
 ---@brief [[
 --- Telescope-hop.nvim allows you to fully configure the default options for |telescope-hop.actions|.
+--- The extension
 ---@brief ]]
 
 ---@tag telescope-hop.setup
 
+-- config table named `telescope_hop` for more suitable docgen
 local telescope_hop = {}
 
 --- Setup function for |telescope-hop.nvim|.
 --- - Note:
----     - `trace_entry`, `reset_selection` and `escape_keys` only affect `actions._hop_loop`
----     - The termcodes for passed strings of `escape_keys` are replaced, which defaults to {<CR>, "<ESC>", "<C-c>"}
+---     - `trace_entry`, `reset_selection` and `escape_keys` only affect |hop_actions._hop_loop|
+---     - The termcodes for passed strings of `escape_keys` are replaced, which defaults to {"<CR>", "<ESC>", "<C-c>"}
 --- - Highlight groups (`sign_hl`, `line_hl`):
 ---   - Link `sign_hl` and `line_hl` to their respective highlight groups
 ---   - Setting `sign_hl` and `line_hl` to a table of two highlight groups results in alternating highlighting
 ---   - Setting `link_hl` to nil does not set any line highlighting
---- - `hop_loop`-specific:
 --- <pre>
 ---
 --- Example:
 ---   require("telescope").setup {
 ---     extensions = {
 ---       hop = {
----         sign_hl = { "WarningMsg", "Title" },
----         line_hl = { "CursorLine", "Normal" },
+---         -- define your hop keys in order
+---         keys = { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";"}
+---         -- Highlight groups to link to signs and lines
+---         -- Tables of two highlight groups induces
+---         -- alternating highlighting by line
+---         sign_hl = { "WarningMsg", "Title" },  
+---         line_hl = { "CursorLine", "Normal" }, 
+---         -- options specific to `hop_loop`
 ---         clear_selection_hl = false,
 ---         trace_entry = true,
 ---         reset_selection = true,
 ---       },
 ---     }
 ---   }
+--- To get the extension loaded and working with telescope, you need to call
+--- load_extension, somewhere after setup function:
+---   require('telescope').load_extension('hop')
 --- </pre>
 ---@param opts table: extension configuration
 ---@field keys table: table of chars in order to hop to (default: roughly lower- & upper-cased home row)

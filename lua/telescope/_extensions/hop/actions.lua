@@ -2,7 +2,10 @@
 --- Telescope-hop.nvim actions that help you navigate and perform actions on results from telescope pickers.
 --- |telescope-hop.actions| are typically composed with other telescope actions.
 ---
---- Telescope-hop.nvim actions (|hop_actions|) are canonically accessed via `R"telescope".extensions.hop`, where `R`
+--- Telescope-hop.nvim actions (|hop_actions|) are canonically accessed via
+--- <pre>
+---     R "telescope".extensions.hop`, where R
+--- </pre>
 --- constitutes hot-reloading via plenary to ensure the config is setup adequately.
 --- <pre>
 ---
