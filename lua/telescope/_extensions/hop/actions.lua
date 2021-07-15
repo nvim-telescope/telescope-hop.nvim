@@ -50,11 +50,11 @@ local hop_config = require "telescope._extensions.hop.config"
 ---@param prompt_bufnr number: The prompt bufnr
 ---@param opts table: options to pass to hop
 ---@field keys table: table of chars in order to hop to, roughly defaults to lower and upper-cased home row
----@field sign_hl string|table: hl group to link hop chars to; if table, must be two groups that are alternated between
----@field line_hl nil|string|table: analogous to sign_hl; in addition, `nil` results in no line highlighting
----@field sign_virt_text_pos string: if "right_align" then hop char aligned to right, else left aligned
----@field clear_selection boolean: temporarily clear Telescope selection highlight group
----@field callback function: usually telescope-action (i.e. `function(prompt_bufnr) ... end`) that uses hopped-to-entry
+---@field sign_hl string|table: hl group to link hop chars to (default: `"QuestionMsg"`)
+---@field line_hl nil|string|table: analogous to sign_hl (default: `nil`)
+---@field sign_virt_text_pos string: if "right_align" then hop char aligned to right else left (default: `"overlay"`)
+---@field clear_selection boolean: temporarily clear Telescope selection highlight group (default: `true`)
+---@field callback function: `function(prompt_bufnr) ... end` that uses hopped-to-entry (default: `nil`)
 ---@return string: the pressed key
 hop_actions._hop = function(prompt_bufnr, opts)
   opts = opts or {}
@@ -179,7 +179,7 @@ end
 ---     defaults = {
 ---       mappings = {
 ---         i = {
----           ['<C-space>'] = require'telescope'.extensions.hop.hop
+---           ['<C-space>'] = R"telescope".extensions.hop.hop
 ---         },
 ---       },
 ---     },
@@ -212,11 +212,11 @@ end
 --- </pre>
 ---@param prompt_bufnr number: The prompt bufnr
 ---@param opts table: options to pass to hop loop
----@field escape_keys table: table of keys upon which hop loop is exited; defaults to <ESC> and <C-c>
----@field trace_entry boolean: entry hopped to will be highlighted via telescope selection
----@field reset_selection boolean: return to entry selected before entering loop
----@field escape_keys table: table of keys upon which hop loop is exited
----@field loop_callback function: function(prompt_bufnr) ... end ran post-loop, e.g. `actions.send_selected_to_qflist`
+---@field trace_entry boolean: entry hopped to will be highlighted via telescope selection hl groups (default: `false`)
+---@field reset_selection boolean: return to entry selected before entering `hop` loop (default: `true`)
+---@field escape_keys table: key chords that interrupt loop before `loop_callback` (default: `{"<ESC>", "<C-c>"`}`)
+---@field accept_keys table: key chords that finish loop and execute `loop_callback if passed (default: `{"<CR>"}`)
+---@field loop_callback function: `function(prompt_bufnr) ... end` ran post-loop (default: nil)
 hop_actions._hop_loop = function(prompt_bufnr, opts)
   vim.validate {
     opts = { opts, "table", true },
