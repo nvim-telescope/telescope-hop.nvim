@@ -2,15 +2,6 @@
 --- Telescope-hop.nvim actions that help you navigate and perform actions on results from telescope pickers.
 --- |telescope-hop.actions| are typically composed with other telescope actions.
 ---
----@brief ]]
-
----@tag telescope-hop.actions
-
--- telescope modules
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
-local action_utils = require "telescope.actions.utils"
-
 --- Telescope-hop.nvim actions (|hop_actions|) are canonically accessed via `R"telescope".extensions.hop`, where `R`
 --- constitutes hot-reloading via plenary to ensure the config is setup adequately.
 --- <pre>
@@ -22,6 +13,15 @@ local action_utils = require "telescope.actions.utils"
 ---  end
 ---end
 --- </pre>
+---@brief ]]
+
+---@tag telescope-hop.actions
+
+-- telescope modules
+local actions = require "telescope.actions"
+local action_state = require "telescope.actions.state"
+local action_utils = require "telescope.actions.utils"
+
 local hop_actions = {}
 local hop_config = require "telescope._extensions.hop.config"
 
