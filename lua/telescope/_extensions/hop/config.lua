@@ -15,8 +15,8 @@ local config = {}
 ---   - Setting `sign_hl` and `line_hl` to a table of two highlight groups results in alternating highlighting
 ---   - Setting `link_hl` to nil does not set any line highlighting
 --- - `hop_loop`-specific: 
---
 --- <pre>
+---
 --- Example:
 ---   require("telescope").setup {
 ---     extensions = {
@@ -30,7 +30,6 @@ local config = {}
 ---     }
 ---   }
 --- </pre>
----
 ---@param opts table: extension configuration
 ---@field keys table: table of chars in order to hop to (default: roughly lower- & upper-cased home row)
 ---@field sign_hl string|table: hl group to link hop chars to (default: `"QuestionMsg"`)
