@@ -116,14 +116,6 @@ hop_actions._hop = function(prompt_bufnr, opts)
     local key = opts.keys[i]
     local linenr = sorting_strategy == "descending" and max_results - i or i
 
-    local sign_hl = type(opts.sign_hl) == "table" and opts.sign_hl[math.pow(2, i % 2)]
-      or opts.sign_hl
-    vim.api.nvim_buf_set_extmark(results_bufnr, ns, linenr, 0, {
-      virt_text = { { key, sign_hl } },
-      virt_text_pos = opts.sign_virt_text_pos,
-      hl_mode = "combine",
-    })
-
     if opts.line_hl ~= nil then
       local line_hl = type(opts.line_hl) == "table" and opts.line_hl[math.pow(2, i % 2)]
         or opts.line_hl
@@ -142,6 +134,14 @@ hop_actions._hop = function(prompt_bufnr, opts)
         }
       )
     end
+
+    local sign_hl = type(opts.sign_hl) == "table" and opts.sign_hl[math.pow(2, i % 2)]
+      or opts.sign_hl
+    vim.api.nvim_buf_set_extmark(results_bufnr, ns, linenr, 0, {
+      virt_text = { { key, sign_hl } },
+      virt_text_pos = opts.sign_virt_text_pos,
+      hl_mode = "combine",
+    })
 
     keyline[key] = linenr
   end
