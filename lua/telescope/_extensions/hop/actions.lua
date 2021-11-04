@@ -120,17 +120,15 @@ hop_actions._hop = function(prompt_bufnr, opts)
       local line_hl = type(opts.line_hl) == "table" and opts.line_hl[math.pow(2, i % 2)]
         or opts.line_hl
       -- full line highlighting
-      vim.api.nvim_buf_add_highlight(results_bufnr, ns_line_hl, line_hl, linenr, 0, -1) -- text
       vim.api.nvim_buf_set_extmark(
         results_bufnr,
         ns_line_hl,
         linenr,
         0, -- beyond text
         {
+          end_line = linenr + 1,
           hl_group = line_hl,
           hl_eol = true,
-          virt_text = { { "", line_hl } },
-          virt_text_pos = "overlay",
         }
       )
     end
