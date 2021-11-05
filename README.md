@@ -34,10 +34,11 @@ local telescope = require("telescope")
 telescope.setup {
   extensions = {
     hop = {
-      -- keys define your hop keys in order; defaults to roughly lower- and uppercased home row
-      -- shown keys here are only subset of defaults!
-      keys = { "a", "s", "d", "f", "g", "h", "j", "k", "l", ";"} -- ... and more
-
+      -- the shown `keys` are the defaults, no need to set `keys` if defaults work for you ;)
+      keys = {"a", "s", "d", "f", "g", "h", "j", "k", "l", ";",
+              "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
+              "A", "S", "D", "F", "G", "H", "J", "K", "L", ":",
+              "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", },
   -- Highlight groups to link to signs and lines; the below configuration refers to demo
       -- sign_hl typically only defines foreground to possibly be combined with line_hl
       sign_hl = { "WarningMsg", "Title" },
